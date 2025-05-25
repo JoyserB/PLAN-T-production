@@ -26,7 +26,7 @@ public class SecurityConfig {
             )
             
             .logout(logout -> logout
-                .logoutSuccessUrl("https://dev-wc3lul6afa5rcq0p.us.auth0.com/v2/logout?client_id=FvGwy7Qw9bPiTFSbHGI3IfEwJQVzX8n8&returnTo=http://localhost:8080/")
+                .logoutSuccessUrl("https://dev-wc3lul6afa5rcq0p.us.auth0.com/v2/logout?client_id=FvGwy7Qw9bPiTFSbHGI3IfEwJQVzX8n8&returnTo=https://plan-t-production.onrender.com/")
             );
         return http.build();
     }
