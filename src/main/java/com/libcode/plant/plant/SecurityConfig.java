@@ -6,7 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
+//import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -20,16 +20,14 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             
-             .oauth2Login(withDefaults());
-            /*.formLogin(form -> form
-                .loginPage("/login") // Opcional: tu vista personalizada
-                .permitAll()
+             .oauth2Login(oauth2 -> oauth2
+                .loginPage("/oauth2/authorization/auth0")
+                .defaultSuccessUrl("/", true)
             )
+            
             .logout(logout -> logout
-                .logoutSuccessUrl("/")
-                .permitAll()
-            );*/
-
+                .logoutSuccessUrl("https://dev-wc3lul6afa5rcq0p.us.auth0.com/v2/logout?client_id=FvGwy7Qw9bPiTFSbHGI3IfEwJQVzX8n8&returnTo=http://localhost:8080/")
+            );
         return http.build();
     }
 }
